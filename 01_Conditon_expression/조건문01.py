@@ -5,11 +5,11 @@
 
 """
 
-phoneTime = int(input("휴대폰 사용시간을 입력하시오."));
+phoneTime = int(input("휴대폰 사용시간을 입력하시오."))
 
 if phoneTime >= 10:
-    print("휴대폰 잠금해제");
+    print("휴대폰 잠금해제")
 elif phoneTime >= 5:
-    print("휴대폰 30분 사용가능");
+    print("휴대폰 30분 사용가능")
 else:
-    print("휴대폰 사용 불가");
+    print("휴대폰 사용 불가")
