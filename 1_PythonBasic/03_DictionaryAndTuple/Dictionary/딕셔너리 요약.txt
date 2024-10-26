@@ -1,0 +1,63 @@
+딕셔너리(Dictionary)란?
+딕셔너리(Dictionary)는 key와 value를 한 쌍으로 저장 하는 시퀀스 자료형이다.
+
+
+딕셔너리(Dictionary)의 특징
+시퀀스 자료형 (순서가 있는 자료형)
+key와 value를 가지고 있는 사전형 자료형
+사전형태의 자료를 만들 때 편리 (단어와 뜻이 있는 자료)
+
+
+Dictionary 선언 방법
+딕셔너리명 = {key1:value1, key2:value2}
+
+ex1)
+stock={"삼성전자" : 82000, "LG전자" : 150000}
+
+ex2)
+stock = {
+    "삼성전자" : [81000, 81500, 82000, 81500, 82000], --> 리스트 형태로도 선언 가능
+    "LG전자"  : (150000, 149000, 148000, 151000, 152000) --> 튜플 형태로도 선언 가능
+}
+
+ex3)
+중첩 딕셔너리
+stock = {
+    "삼성전자" : {
+        "현재가" : 82000,
+        "보유수량" : 5,
+        "매수단가" : 81000
+    }
+}
+
+
+딕셔너리 값 접근하기
+Dictionary["key"]
+
+중첩 딕셔너리 값 접근하기
+Dictionary["key"]["key"]
+
+딕셔너리 값 할당하기
+Dictionary["key"] = value
+
+딕셔너리 값 삭제하기
+del Dictionary["key"]
+
+
+딕셔너리 함수
+ex)
+stock = {
+    "삼성전자" : 82000,
+    "SK하이닉스" : 123000,
+    "NAVER" : 370000,
+    "카카오" : 133000
+}
+
+1) items() --> key와 value 쌍 반환
+stock.items()
+
+2) keys() --> key 반환
+stock.keys()
+
+3) values() --> value 반환
+stock.values()
