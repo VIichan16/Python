@@ -11,6 +11,7 @@ printSumAvg(10,20,30)
 """
 
 def printSumAvg(num1,num2,num3):
+    total = num1+num2+num3
     avg = total/3
 
     print(f"합계 {total} 평균 {int(avg)}")
