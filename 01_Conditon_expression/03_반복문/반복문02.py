@@ -7,17 +7,15 @@
 숫자 2 입력 : "실시간 랭킹" 출력
 숫자 3 입력 : "게임을 종료합니다" 출력 후 프로그램 종료
 """
-from operator import truediv
 
-print("======================")
-print("메뉴를 선택하세요.")
-print("1. 게임시작")
-print("2. 실시간 랭킹")
-print("3. 게임 종료")
-print("======================")
 
 
 while True:
+    print("메뉴를 선택하세요.")
+    print("1. 게임시작")
+    print("2. 실시간 랭킹")
+    print("3. 게임 종료")
+
     x = int(input("메뉴 입력 : "))
 
     if x < 0 or x > 3:
@@ -25,11 +23,17 @@ while True:
         continue
 
     if x == 1:
-        print("게임 시작")
-        print("======================")
+        print("■■■■■■■■■■■")
+        print("■ 게임시작 ■")
+        print("■■■■■■■■■■■")
+        print(" ")
+        print(" ")
     elif x == 2:
-        print("실시간 랭킹")
-        print("======================")
+        print("■■■■■■■■■■■■")
+        print("■ 실시간랭킹 ■")
+        print("■■■■■■■■■■■■")
+        print(" ")
+        print(" ")
     elif x ==3:
         print("게임 종료")
         break
