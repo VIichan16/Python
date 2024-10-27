@@ -33,5 +33,10 @@ ex)
 goblin = Monster()
 goblin.say()
 
+
+클래스 변수
+: 인스턴스들이 모두 공유하는 변수
+
+
 """
 
