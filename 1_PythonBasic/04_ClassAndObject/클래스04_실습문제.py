@@ -72,14 +72,47 @@ def menu():
 
 
         if select == "1":
-            sword.sale()
-            break
+            while True:
+                print()
+                print("===============아이템 선택=============")
+                print("판매 할 아이템을 선택하시오.")
+                print("◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆")
+                print("1. 이가닌자의검")
+                print("2. 신비한 투명물약")
+                print("◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆")
+                selectInven = int(input(""))
+                if selectInven == 1:
+                    sword.sale()
+                    break
+                elif selectInven == 2:
+                    potion.sale()
+                    break
+                else:
+                    print("잘못 입력 하였습니다. 다시 입력하시오.")
+
         elif select == "2":
-            sword.discard()
-            break
+            while True:
+                print()
+                print("===============아이템 선택=============")
+                print("버릴 아이템을 선택하세요.")
+                print("◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆")
+                print("1. 이가닌자의검")
+                print("2. 신비한 투명물약")
+                print("◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆")
+                selectInven = int(input(""))
+                if selectInven == 1:
+                    sword.discard()
+                    break
+                elif selectInven == 2:
+                    potion.discard()
+                    break
+                else:
+                    print("잘못 입력 하였습니다. 다시 입력하시오.")
+
         elif select == "3":
             while True:
-                print("===============아이템 선택===============")
+                print()
+                print("===============아이템 선택=============")
                 print("사용하거나 착용할 아이템을 선택하시오. ")
                 print("◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆◆")
                 print ("1. 이가닌자의검")
@@ -92,6 +125,9 @@ def menu():
                 elif selectInven == 2:
                     potion.use()
                     break
+                else:
+                    print("잘못 입력 하였습니다. 다시 입력하시오.")
+
         elif select == "4":
             print("메뉴를 종료합니다.")
             break
