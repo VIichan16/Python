@@ -7,7 +7,7 @@ data = {
 }
 
 file = open("data.pickle", "wb")
-pickle.dump(data, file)
+pickle.dump(data, file) # --> file 변수에 data 객체가 저장된다.
 file.close()
 
 
