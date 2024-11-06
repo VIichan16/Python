@@ -13,12 +13,13 @@ post_list = []
 if os.path.exists(file_path): #os.path.exists(file_path) --> 위에서 지정해준 경로에 파일이 있다면 true 반환
     # 게시글 로딩
     print("게시글 로딩중...")
-    f = open(file_path, "r", encoding="utf-8")
-    reader = csv.reader(f)
-    for data in reader:
+    f = open(file_path, "r", encoding="utf-8") #경로를 지정해준 파일을 열어 f 변수에 객체 형태로 저장
+    reader = csv.reader(f) #csv 모듈을 사용하여 'f' 파일 객체를 읽기 위한 CSV 리더 객체(reader)를 생성합니다. -> 이 객체는 csv로 저장된 객체를 한줄씩 읽을 수 있게 해줌
+
+    for data in reader: # csv 파일 객체를 저장한 reader 객체에서 한줄 씩 읽어 data 변수에 저장
         #Post 인스턴스 생성하기
-        post = Post(int(data[0]),data[1],data[2],int(data[3]))
-        post_list.append(post)
+        post = Post(int(data[0]),data[1],data[2],int(data[3]))  #'data' 리스트에서 각 요소를 사용하여 Post 객체를 생성합니다.
+        post_list.append(post) #Post객체를 post_list에 추가
 else: #파일이 경로에 없는 경우
     #파일 생성하기
     f = open(file_path, "w", encoding="utf-8", newline="")
@@ -28,12 +29,12 @@ else: #파일이 경로에 없는 경우
 def write_post():
     """게시글 쓰기 함수"""
     print("\n\n- 게시글 쓰기 -")
-    title = input("제목을 입력해주세요.\n >>>")
-    content = input("내용을 입력해주세요.\n >>>")
+    title = input("제목을 입력해주세요.\n >>>") #사용자가 입력한 제목을 title 변수에 저장
+    content = input("내용을 입력해주세요.\n >>>") #사용자가 입력한 내용을 content 변수에 저장
     #글번호
-    id = post_list[-1].get_id() + 1 #리스트 마지막 요소를 가져오고 싶을 땐 -1
-    post = Post(id,title,content,0)
-    post_list.append(post)
+    id = post_list[-1].get_id() + 1 #post_list의 마지막 요소(post_list[-1])에서 'get_id()' 메서드를 호출하여 마지막 게시글의 ID를 가져오고, 그 값에 1을 더하여 새로운 게시글의 ID를 생성합니다.
+    post = Post(id,title,content,0) #새 개시글 객체를 생성
+    post_list.append(post) #사용자가 작성한 내용들을 post_list에 저장
     print("# 게시글이 등록되었습니다.")
 
 
@@ -48,7 +49,7 @@ def list_post():
         print(f"조회수 : {post.get_view_count()}")
         print("")
         id_list.append(post.get_id())
-    # Todo 구현 중 나중에 구현이 되면 삭제 할 것!
+
     while True:
         print("Q) 글 번호를 선택해 주세요. (메뉴로 돌아가려면 -1을 입력해주세요.)")
         try:
