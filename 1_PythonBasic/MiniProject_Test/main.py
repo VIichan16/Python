@@ -38,8 +38,62 @@ def postWrite():
     print("게시물 등록 완료")
 
 #Todo 구현중
-def readPost():
-    print(post_list)
+def listPost():
+    print("\n\n- 게시물 목록 -")
+    id_list = []
+    for post in post_list:
+        print(f"게시물번호: {post.id}")
+        print(f"제목: {post.title}")
+        print(f"작성자: {post.author}")
+        print(f"조회수: {post.view_count}\n")
+        print("")
+        id_list.append(post.id)
+
+    while True:
+        print("Q) 글 번호를 선택해 주세요. (메뉴로 돌아가려면 -1을 입력해주세요.)")
+        id = int(input(">>>"))
+        if id in id_list:
+            detail_post(id)
+            break
+
+
+#글 상세 페이지
+def detail_post(id):
+    """게시글 상세 보기 함수"""
+    print("\n\n - 게시글 상세 -")
+
+    for post in post_list:
+        if post.get_id() == id:
+            # 조회수 1 증가
+            post.add_view_count()
+            print("번호 : ", post.get_id())
+            print("제목 : ", post.get_title())
+            print("본문 : ", post.get_content())
+            print("작성자 : ", post.get_author())
+            print("조회수 : ", post.get_view_count())
+            target_post = post
+
+    while True:
+        print("Q) 수정: 1 삭제:2 (메뉴로 돌아가려면 -1을 입력)")
+        try:
+            choice = int(input(">>>"))
+            if choice == 1:
+                #수정 함수
+                break
+            elif choice == 2:
+                #삭제함수
+                break
+            elif choice == -1:
+                break
+            else:
+                print("잘못 입력하였습니다.")
+        except ValueError:
+            print("숫자를 입력해 주세요.")
+
+#Todo 업데이트 구현
+
+
+
 
 
 
@@ -59,7 +113,9 @@ while True:
         if choice == 1:
             postWrite()
         if choice == 2:
-            readPost()
+            listPost()
+        if choice == 3:
+            break
 
 
 
