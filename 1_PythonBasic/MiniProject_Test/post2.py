@@ -14,6 +14,8 @@ class Post:
         self.author = author
         self.view_count = view_count
 
+    def add_view_count(self):
+        self.view_count += 1
 
     def get_id(self):
         return self.id

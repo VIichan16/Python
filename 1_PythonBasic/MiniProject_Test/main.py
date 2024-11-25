@@ -15,7 +15,7 @@ if os.path.exists(file_path):
     file = open(file_path, "r", encoding="utf-8")
     reader = csv.reader(file)
     for data in reader:
-        post = Post(int(data[0]), data[1], data[2], data[3], int(data[4]))
+        post = Post(int(data[0]), data[1], data[2],data[3], int(data[4]))
         post_list.append(post)
 else:
     file = open(file_path, "w", encoding="utf-8", newline='')
@@ -26,7 +26,7 @@ else:
 
 
 #게시글 쓰기
-def postWrite():
+def post_write():
     print("\n\n- 게시글 쓰기 -")
     title = input("제목을 입력하세요.\n >>>")
     contents = input("내용을 입력하세요.\n >>>")
@@ -37,8 +37,8 @@ def postWrite():
     post_list.append(post)
     print("게시물 등록 완료")
 
-#Todo 구현중
-def listPost():
+
+def list_post():
     print("\n\n- 게시물 목록 -")
     id_list = []
     for post in post_list:
@@ -51,10 +51,20 @@ def listPost():
 
     while True:
         print("Q) 글 번호를 선택해 주세요. (메뉴로 돌아가려면 -1을 입력해주세요.)")
-        id = int(input(">>>"))
-        if id in id_list:
-            detail_post(id)
-            break
+        try:
+            id = int(input(">>>"))
+            if id in id_list:
+                detail_post(id)
+                break
+            elif id == -1:
+                break
+            else:
+                print("없는 글 번호 입니다.")
+        except ValueError:
+            print("숫자를 입력해 주세요.")
+
+
+
 
 
 #글 상세 페이지
@@ -78,10 +88,10 @@ def detail_post(id):
         try:
             choice = int(input(">>>"))
             if choice == 1:
-                #수정 함수
+                update_post(target_post)
                 break
             elif choice == 2:
-                #삭제함수
+                delete_post(target_post)
                 break
             elif choice == -1:
                 break
@@ -90,12 +100,31 @@ def detail_post(id):
         except ValueError:
             print("숫자를 입력해 주세요.")
 
-#Todo 업데이트 구현
+#게시물 수정 함수
+def update_post(target_post):
+    """게시물 수정"""
+    print("\n\n게시물 수정")
+    title = input("제목을 입력하시오.\n")
+    content = input("본문을 입력하시오.\n")
+    target_post.set_post(target_post.get_id(), title, content, target_post.get_author(), target_post.get_view_count())
+    print("게시물 수정 완료!")
 
+#게시물 삭제 함수
+def delete_post(target_post):
+    """게시물 삭제"""
+    post_list.remove(target_post)
+    print("게시물 삭제 완료!")
 
-
-
-
+#게시물 저장 함수
+def save():
+    f = open(file_path, "w", encoding="utf-8", newline='')
+    writer = csv.writer(f)
+    for post in post_list:
+        row = [post.get_id(), post.get_title(), post.get_content(), post.get_author(), post.get_view_count()]
+        writer.writerow(row)
+    f.close()
+    print("# 저장이 완료 되었습니다.")
+    print("# 프로그램 종료")
 
 while True:
     print("\n\n- FASTCAMPUS BLOG -")
@@ -105,17 +134,20 @@ while True:
     print("- 3. 프로그램 종료 -")
 
     try:
+        print("\n")
         choice = int(input("메뉴를 선택하세요."))
 
     except ValueError:
         print("숫자를 입력하세요.")
     else:
         if choice == 1:
-            postWrite()
+            post_write()
         if choice == 2:
-            listPost()
+            list_post()
         if choice == 3:
+            save()
             break
+
 
 
 

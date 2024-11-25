@@ -85,7 +85,6 @@ def detail_post(id):
             choice=int(input(">>>"))
             if choice==1:
                 update_post(target_post)
-
                 break
             elif choice ==2:
                 delete_post(target_post)
